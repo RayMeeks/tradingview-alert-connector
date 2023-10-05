@@ -11,6 +11,20 @@ export const dydxCreateOrder = async (orderParams: dydxOrderParams) => {
   while (count <= maxTries) {
     try {
       const connector = await DYDXConnector.build();
+
+      // export enum OrderType {
+      //   LIMIT = 'LIMIT',
+      //   MARKET = 'MARKET',
+      //   STOP_LIMIT = 'STOP_LIMIT',
+      //   TRAILING_STOP = 'TRAILING_STOP',
+      //   TAKE_PROFIT = 'TAKE_PROFIT',
+      // }
+      
+      // export enum TimeInForce {
+      //   GTT = 'GTT',
+      //   FOK = 'FOK',
+      //   IOC = 'IOC',
+      // }
       
       const convertedOrderParams: Omit<ApiOrder, 'clientId' | 'signature'> = {
         ...orderParams,
