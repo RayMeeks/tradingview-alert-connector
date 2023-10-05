@@ -7,30 +7,38 @@ import {
 import { PositionSide } from '@perp/sdk-curie';
 
 export type AlertObject = {
-	exchange: string;
-	strategy: string;
 	market: string;
-	size?: number;
-	sizeUsd?: number;
-	sizeByLeverage?: number;
 	order: string;
-	price: number;
-	position: string;
-	reverse: boolean;
+	size: number;
+	sizeUsd?: number;
+	reverse?: boolean;
+	strategy: string;
+	type: string;
+	enterPrice?: number; 
+	trailingPercent?: string | null;
 	passphrase?: string;
-};
+	position: string;
+	exchange: string;
+	sizeByLeverage?: number;
+	reduceOnly?: boolean;
+  };
+
 
 export type dydxOrderParams = {
-	market: Market;
-	side: OrderSide;
-	type: OrderType.MARKET;
-	timeInForce: TimeInForce.FOK;
-	postOnly: false;
-	size: string;
-	price: string;
-	limitFee: string;
-	expiration: string;
+    market: Market;
+    side: OrderSide;
+    type: string ;
+    timeInForce?: TimeInForce.FOK | TimeInForce.IOC | null | TimeInForce.GTT;
+    postOnly: false;
+    size: string;
+    price: string;
+    limitFee: string;
+    expiration: string;
+    	trailingPercent? : string | null ;
+	reduceOnly?: boolean;
 };
+
+
 
 export type perpOrderParams = {
 	tickerSymbol: string;
